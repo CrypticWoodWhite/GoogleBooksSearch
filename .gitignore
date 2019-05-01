@@ -26,3 +26,5 @@ desktop.ini
 .env
 .zip
 archive
+node_modules
+.vscode
