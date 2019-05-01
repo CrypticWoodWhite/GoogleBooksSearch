@@ -8,17 +8,17 @@ export function Container({ children }) {
     );
 };
 
-export function Row({ idNumber, children }) {
+export function Row({ id, children }) {
     return (
-        <section className="row" id={idNumber}>
+        <section className="row" id={id}>
             {children}
         </section>
     );
 };
 
-export function Column({ idNumber, children }) {
+export function Column({ id, children }) {
     return (
-        <section className="three columns" id={idNumber}>
+        <section className="three columns" id={id}>
             {children}
         </section>
     );
