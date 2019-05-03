@@ -8,9 +8,7 @@ import SearchForm from "../components/SearchForm";
 import A from "../components/A";
 // import { SaveBtn } from "../components/Button";
 import Footer from "../components/Footer";
-// import "../css/normalize.css";
-// import "../css/skeleton.css";
-// import "../css/style.css";
+// import Card from "../components/Card";
 
 class Search extends Component {
 
