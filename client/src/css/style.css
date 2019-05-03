@@ -52,35 +52,27 @@ img {
     border: none;
 }
 
-.dialog-form,
-.ui-dialog-titlebar {
-    background: white;
-    border-radius: 4px;
-    border: 1px solid #bbb;
+form {
+    position: relative;
+    float: right;
+    margin: 1.25rem 0 0 0;
+    height: 100%;
 }
 
-.dialog-form {
-    padding: 1rem 2rem 0rem 2rem;
+form > input[type="search"] {
+    float: left;
+    margin: 0;
+    border-radius: 4px 0 0 4px;
 }
 
-.ui-dialog-titlebar {
-    font-weight: bold;
-    padding: 2rem;
+form > button[type="submit"] {
+    float: left;
+    margin: 0;
+    border-radius: 0 4px 4px 0;
 }
 
-.ui-button {
-    padding: 0 1rem;
-    margin: 0.5rem;
-    display: inline-flex;
-    right: 2rem;
-    top: 1rem;
-    bottom: 1rem;
-    position: absolute;
-}
-
-input,
-textarea {
-    width: 100%;
+#nav-search {
+    float: right;
 }
 
 /* nav bar, other skeleton stuff, and media queries below */
@@ -268,7 +260,7 @@ textarea {
     }
     .navbar-item {
         position: relative;
-        /* float: left; */
+        float: left;
         margin-bottom: 0;
     }
     .navbar-link {

@@ -1,16 +1,23 @@
 import React from "react";
-import Container from "./Container"
+import { Container } from "./Grid";
+import { UL } from "./UnorderedList";
 
-const Nav = ( {children} ) => {
+export function Nav( {children} ) {
     return (
         <nav className="navbar">
             <Container>
-                <ul className="navbar-list">
+                <UL className="navbar-list">
                     {children}
-                </ul>
+                </UL>
             </Container>
         </nav>
     );
-}
+};
 
-export default Nav;
+export function NavItem({ children, id }) {
+    return (
+        <li className="navbar-item" id={id}>
+            {children}
+        </li>
+    );
+};

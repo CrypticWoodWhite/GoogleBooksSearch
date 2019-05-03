@@ -1,11 +1,17 @@
 import React from "react";
 
-const UnorderedList = ( {children} ) => {
+export function UL( { className, children } ) {
     return (
-        <ul>
+        <ul className={className}>
             {children}
         </ul>
     );
 }
 
-export default UnorderedList;
+export function LI({ className, children }) {
+    return (
+        <li className={className}>
+            {children}
+        </li>
+    );
+}
