@@ -16,9 +16,9 @@ export function Row({ id, children }) {
     );
 };
 
-export function Column({ id, children }) {
+export function Column({ number, id, children }) {
     return (
-        <section className="three columns" id={id}>
+        <section className={{number} + " columns"} id={id}>
             {children}
         </section>
     );

@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import Nav from "../components/Nav";
 import NavItem from "../components/NavItem";
 import {Container, Row, Column} from "../components/Grid";
+import SearchForm from "../components/SearchForm";
 import UnorderedList from "../components/UnorderedList";
 import ListItem from "../components/ListItem";
 import Image from "../components/Image";
@@ -35,9 +36,21 @@ class Search extends Component {
                 </Header>
 
                 <Nav>
+                    <NavItem href="/">
+                        Search
+                    </NavItem>
+                    <NavItem href="/">
+                        Saved books
+                    </NavItem>
                 </Nav>
 
-                <Row id="row-one">
+                <SearchForm>
+
+                </SearchForm>
+
+                <Row id="row-two">
+                    <h3>Search results</h3>
+
                 </Row>
 
             </Container>
