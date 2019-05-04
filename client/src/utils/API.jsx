@@ -2,6 +2,9 @@ import axios from "axios";
 
 export default {
     getBooks: function() {
+        return axios.get("/books");
+    },
+    getSavedBooks: function() {
         return axios.get("/api/books");
     },
     saveBook: function(bookData) {

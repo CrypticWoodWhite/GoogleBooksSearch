@@ -1,25 +1,33 @@
 import React, { Component } from "react";
 import Header from "../components/Header";
 import Nav from "../components/Nav";
-import NavItem from "../components/NavItem";
 import {Container, Row, Column} from "../components/Grid";
-import UnorderedList from "../components/UnorderedList";
-import ListItem from "../components/ListItem";
-import Image from "../components/Image";
-import Link from "../components/Link";
-import ViewBtn from "../components/ViewBtn";
-import DeleteBtn from "../components/DeleteBtn";
 import Footer from "../components/Footer";
+import API from "../utils/API";
 
 class Saved extends Component {
 
     state = {
-
+        books: [],
+        title: "",
+        author: "",
+        synopsis: "",
+        image: "",
+        link: ""
     };
 
     componentDidMount () {
-        this.getBooks();
+        this.getSavedBooks();
     };
+
+    getSavedBooks = () => {
+        API.getSavedBooks()
+            .then(
+                res => this.setState({books: res.data})
+            ).catch(
+                err => console.log(err);
+            )
+    }
 
 
     ////

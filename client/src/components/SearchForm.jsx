@@ -1,12 +1,11 @@
 import React from "react";
-import { SearchBtn } from "./Button";
 
-const SearchForm = () => {
+const SearchForm = ({ children }) => {
     return (
         <form id="search-form">
             <input type="search" id="search-form" placeholder="I want to read...">
             </input>
-            <SearchBtn></SearchBtn>
+            {children}
         </form>
     );
 }
