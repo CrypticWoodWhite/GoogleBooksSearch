@@ -24,24 +24,27 @@ class Search extends Component {
         search: ""
     };
 
-    // componentDidMount () {
+    // componentDidMount() {
     //     this.loadBooks();
     // };
 
     loadBooks = () => {
-
+        console.log();
     };
 
     handleSearchClick = event => {
         event.preventDefault();
 
         API.searchBooks(this.state.search)
-            .then(res => this.setState({
-                books: res.data
-            })).catch(err => console.log(err));
+            .then(res => {
+                this.setState({
+                    books: res.data
+                });
+                this.loadBooks();
+            }).catch(err => console.log(err));
     };
 
-    searchBooks = event => {
+    searchBooksInput = event => {
         const value = event.target.value;
         this.setState({
           search: value
@@ -51,11 +54,11 @@ class Search extends Component {
     handleSaveBook = (event) => {
         event.preventDefault();
         API.saveBook({
-            title: this.state.title,
-            author: this.state.author,
-            synopsis: this.state.synopsis,
-            image: this.state.image,
-            link: this.state.link
+            title: this.state.books.items.volumeInfo.title,
+            author: this.state.books.items.volumeInfo.authors,
+            synopsis: this.state.books.items.volumeInfo.description,
+            image: this.state.books.items.volumeInfo.imageLinks.thumbnail,
+            link: this.state.books.items.volumeInfo.previewLink
         }).then(res => this.setState({
             books: res.data
         })).catch(err => console.log(err));
@@ -84,7 +87,7 @@ class Search extends Component {
                     
                     <NavItem id="nav-search">
                         <SearchForm
-                            onChange={ this.searchBooks }
+                            onChange={ this.searchBooksInput }
                         >
                             <SearchBtn
                                 onClick={ this.handleSearchClick }
@@ -97,31 +100,31 @@ class Search extends Component {
 
                 <br/>
 
-                <Row id="row-two-title">
+                <Row id="row-two-library">
                     <h4>Library</h4>
                 </Row>
 
-                <Row id="row-three-cards">
+                <Row id="row-three-searchcards">
 
                     { this.state.books.length ? (
                             this.state.books.map(book => (
                             <Card>
                                 <IMG
-                                    alt={ book.title }
-                                    src={ book.image }
-                                    id={"img-" + book.title }
+                                    alt={ book.items.volumeInfo.title }
+                                    src={ book.items.volumeInfo.imageLinks.thumbnail }
+                                    id={"img-" + book.items.volumeInfo.title }
                                 />
                                 <A 
                                     className="book"
-                                    href={ book.link }
+                                    href={ book.items.volumeInfo.previewLink }
                                 >
                                     <strong>
-                                        { book.title } by { book.author }
+                                        { book.items.volumeInfo.title } by { book.items.volumeInfo.authors }
                                     </strong>
                                 </A>
-                                <p>{ book.synopsis }</p>
+                                <p>{ book.items.volumeInfo.description }</p>
                                 <SaveBtn
-                                    id={"save-" + book.title }
+                                    id={"save-" + book.items.volumeInfo.title }
                                     onClick= { this.handleSaveBook }
                                 >
                                     Save
