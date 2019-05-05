@@ -1,11 +1,17 @@
 import React from "react";
 
-const Card = ({ children }) => {
+export function Cards({ children }) {
     return (
-        <section className="card">
+        <section className="cards-container">
             {children}
         </section>
     );
-}
+};
 
-export default Card;
+export function Card({ id, children }) {
+    return (
+        <section className="card" id={ id }>
+            {children}
+        </section>
+    );
+};

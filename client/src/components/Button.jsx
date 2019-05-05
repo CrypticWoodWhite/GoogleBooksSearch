@@ -2,7 +2,7 @@ import React from "react";
 
 export function DeleteBtn ({ children, id, onClick }) {
     return (
-        <button className="button delete" type="button" id={id} onClick={onClick} >
+        <button className="button button-primary delete" type="button" id={id} onClick={onClick} >
             {children}
         </button>
     );
@@ -18,7 +18,7 @@ export function ViewBtn ({ children, id, onClick }) {
 
 export function SaveBtn ({ children, id, onClick }) {
     return (
-        <button className="button save" type="button" id={id} onClick={onClick} >
+        <button className="button button-primary save" type="button" id={id} onClick={onClick} >
             {children}
         </button>
     );

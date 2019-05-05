@@ -8,7 +8,7 @@ import IMG from "../components/IMG";
 import A from "../components/A";
 import { SaveBtn } from "../components/Button";
 import Footer from "../components/Footer";
-import Card from "../components/Card";
+import { Cards, Card } from "../components/Card";
 import API from "../utils/API";
 
 
@@ -24,45 +24,38 @@ class Search extends Component {
         search: ""
     };
 
-    // componentDidMount() {
-    //     this.loadBooks();
-    // };
-
-    loadBooks = () => {
-        console.log();
-    };
-
     handleInputChange = event => {
         const searchTerms = event.target.value;
         this.setState({
-          search: searchTerms
+            search: searchTerms
         });
     };
 
     handleSearchSubmit = event => {
         event.preventDefault();
+
         console.log("handleSearchSubmit: " + this.state.search);
         API.searchBooks(this.state.search)
             .then(res => {
-                console.log("res: " + res);
                 this.setState({
-                    books: res.data
-                })
-                // this.loadBooks();
+                    books: res.data.items
+                });
             }).catch(err => console.log(err));
     };
 
-    handleSaveBook = (event) => {
+    handleSaveBook = event => {
         event.preventDefault();
+
         API.saveBook({
-            title: this.state.books.items.volumeInfo.title,
-            author: this.state.books.items.volumeInfo.authors,
-            synopsis: this.state.books.items.volumeInfo.description,
-            image: this.state.books.items.volumeInfo.imageLinks.thumbnail,
-            link: this.state.books.items.volumeInfo.previewLink
-        }).then(res => this.setState({
-            books: res.data
-        })).catch(err => console.log(err));
+            title: this.state.books.volumeInfo.title,
+            author: this.state.books.volumeInfo.authors,
+            synopsis: this.state.books.volumeInfo.description,
+            image: this.state.books.volumeInfo.imageLinks.thumbnail,
+            link: this.state.books.volumeInfo.previewLink
+        }).then(res => console.log("res of save: " + res)
+        ).catch(err => console.log(err));
+
+
     };
     
 
@@ -106,30 +99,32 @@ class Search extends Component {
                 <Row id="row-three-searchcards">
 
                     { this.state.books.length ? (
-                            this.state.books.map(book => (
-                            <Card>
-                                <IMG
-                                    alt={ book.items.volumeInfo.title }
-                                    src={ book.items.volumeInfo.imageLinks.thumbnail }
-                                    id={"img-" + book.items.volumeInfo.title }
-                                />
-                                <A 
-                                    className="book"
-                                    href={ book.items.volumeInfo.previewLink }
-                                >
-                                    <strong>
-                                        { book.items.volumeInfo.title } by { book.items.volumeInfo.authors }
-                                    </strong>
-                                </A>
-                                <p>{ book.items.volumeInfo.description }</p>
-                                <SaveBtn
-                                    id={"save-" + book.items.volumeInfo.title }
-                                    onClick= { this.handleSaveBook }
-                                >
-                                    Save
-                                </SaveBtn>
-                            </Card>
-                        ))
+                        <Cards>
+                            {this.state.books.map(book => (
+                                <Card id={"card-" + book.volumeInfo.title}>
+                                    <IMG
+                                        alt={ book.volumeInfo.title }
+                                        src={ book.volumeInfo.imageLinks.thumbnail }
+                                        id={"img-" + book.volumeInfo.title }
+                                    />
+                                    <A 
+                                        className="book"
+                                        href={ book.volumeInfo.previewLink }
+                                    >
+                                        <strong><i>{ book.volumeInfo.title }</i></strong> by { book.volumeInfo.authors }
+                                    </A>
+                                    <br/>
+                                    <br/>
+                                    <p>{ book.volumeInfo.description }</p>
+                                    <SaveBtn
+                                        id={"save-" + book.volumeInfo.title }
+                                        onClick= { this.handleSaveBook }
+                                    >
+                                        Save
+                                    </SaveBtn>
+                                </Card>
+                            ))}
+                        </Cards>
                     ) : (
                         <h5>No books to display, try a new search.</h5>
                     )}
