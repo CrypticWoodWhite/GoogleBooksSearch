@@ -7,7 +7,7 @@ import IMG from "../components/IMG";
 import A from "../components/A";
 import { SearchBtn, DeleteBtn } from "../components/Button";
 import Footer from "../components/Footer";
-import Card from "../components/Card";
+import { Card, Cards } from "../components/Card";
 import API from "../utils/API";
 
 class Saved extends Component {
@@ -28,10 +28,15 @@ class Saved extends Component {
     getSavedBooks = () => {
         API.getSavedBooks()
             .then(res => this.setState({
-                books: res.data
-            })).catch(err => console.log(err)
-            );
-    }
+                books: res.data.items
+            })).catch(err => console.log(err));
+    };
+
+    handleDelete = id => {
+        API.deleteBook(id)
+            .then(res => console.log("delete res: " + res))
+            .catch(err => console.log(err));
+    };
 
 
     ////
@@ -74,13 +79,42 @@ class Saved extends Component {
                 </Row>
 
                 <Row id="row-three-savedcards">
+                    { this.state.books.length ? (
+                        <Cards>
+                            {this.state.books.map(book => (
+                                <Card id={"card-" + book.volumeInfo.title}>
+                                    <IMG
+                                        alt={ book.volumeInfo.title }
+                                        src={ book.volumeInfo.imageLinks.thumbnail }
+                                        id={"img-" + book.volumeInfo.title }
+                                    />
+                                    <A 
+                                        className="book"
+                                        href={ book.volumeInfo.previewLink }
+                                    >
+                                        <strong><i>{ book.volumeInfo.title }</i></strong> by { book.volumeInfo.authors }
+                                    </A>
+                                    <br/>
+                                    <br/>
+                                    <p>{ book.volumeInfo.description }</p>
+                                    <DeleteBtn
+                                        id={"save-" + book.volumeInfo.title }
+                                        onClick= { this.handleDelete }
+                                    >
+                                        Save
+                                    </DeleteBtn>
+                                </Card>
+                            ))}
+                        </Cards>
+                    ) : (
+                        <h5>No saved books, try a new search first.</h5>
+                    )}
 
                 </Row>
 
                 <Footer></Footer>
 
             </Container>
-
 
         )
     };

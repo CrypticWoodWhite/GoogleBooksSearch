@@ -3,7 +3,6 @@ import Header from "../components/Header";
 import { Nav, NavItem } from "../components/Nav";
 import { Container, Row } from "../components/Grid";
 import SearchForm from "../components/SearchForm";
-// import { UL, LI } from "../components/UnorderedList";
 import IMG from "../components/IMG";
 import A from "../components/A";
 import { SaveBtn } from "../components/Button";
@@ -34,7 +33,6 @@ class Search extends Component {
     handleSearchSubmit = event => {
         event.preventDefault();
 
-        console.log("handleSearchSubmit: " + this.state.search);
         API.searchBooks(this.state.search)
             .then(res => {
                 this.setState({

@@ -2,15 +2,15 @@ import axios from "axios";
 
 export default {
     searchBooks: function(searchTerms) {
-        return axios.get("https://www.googleapis.com/books/v1/volumes?q=" + searchTerms);
+        return axios.get("https://www.googleapis.com/books/v1/volumes?q=" + searchTerms + "&maxResults=40");
     },
     getSavedBooks: function() {
-        return axios.get("/api/savedbooks");
+        return axios.get("/api/books");
     },
     saveBook: function(bookData) {
-        return axios.post("/api/savedbooks", bookData);
+        return axios.post("/api/books", bookData);
     },
     deleteBook: function(id) {
-        return axios.delete("/api/savedbooks/" + id);
+        return axios.delete("/api/books/" + id);
     }
 };
