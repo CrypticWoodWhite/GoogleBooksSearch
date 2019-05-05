@@ -6,7 +6,7 @@ import SearchForm from "../components/SearchForm";
 // import { UL, LI } from "../components/UnorderedList";
 import IMG from "../components/IMG";
 import A from "../components/A";
-import { SaveBtn, SearchBtn } from "../components/Button";
+import { SaveBtn } from "../components/Button";
 import Footer from "../components/Footer";
 import Card from "../components/Card";
 import API from "../utils/API";
@@ -32,23 +32,24 @@ class Search extends Component {
         console.log();
     };
 
-    handleSearchClick = event => {
-        event.preventDefault();
-
-        API.searchBooks(this.state.search)
-            .then(res => {
-                this.setState({
-                    books: res.data
-                });
-                this.loadBooks();
-            }).catch(err => console.log(err));
+    handleInputChange = event => {
+        const searchTerms = event.target.value;
+        this.setState({
+          search: searchTerms
+        });
     };
 
-    searchBooksInput = event => {
-        const value = event.target.value;
-        this.setState({
-          search: value
-        });
+    handleSearchSubmit = event => {
+        event.preventDefault();
+        console.log("handleSearchSubmit: " + this.state.search);
+        API.searchBooks(this.state.search)
+            .then(res => {
+                console.log("res: " + res);
+                this.setState({
+                    books: res.data
+                })
+                // this.loadBooks();
+            }).catch(err => console.log(err));
     };
 
     handleSaveBook = (event) => {
@@ -87,12 +88,10 @@ class Search extends Component {
                     
                     <NavItem id="nav-search">
                         <SearchForm
-                            onChange={ this.searchBooksInput }
+                            onSubmit={ this.handleSearchSubmit }
+                            value={ this.state.search }
+                            onChange={ this.handleInputChange }
                         >
-                            <SearchBtn
-                                onClick={ this.handleSearchClick }
-                            >
-                            </SearchBtn>
                         </SearchForm>
                     </NavItem>
 

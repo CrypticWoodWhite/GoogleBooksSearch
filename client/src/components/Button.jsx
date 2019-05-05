@@ -24,9 +24,9 @@ export function SaveBtn ({ children, id, onClick }) {
     );
 };
 
-export function SearchBtn ({ onClick }) {
+export function SearchBtn () {
     return (
-        <button className="button button-primary" type="submit" id="submit" onClick={onClick}>
+        <button className="button button-primary" type="submit" id="submit">
             <i className="fa fa-search"></i>
         </button>
     );

@@ -1,11 +1,12 @@
 import React from "react";
+import { SearchBtn } from "../components/Button";
 
-const SearchForm = ({ onChange, children }) => {
+const SearchForm = ({ onSubmit, value, onChange }) => {
     return (
-        <form id="search-form">
-            <input type="search" id="search-form" placeholder="I want to read..." onChange={ onChange }>
+        <form id="search-form" onSubmit={onSubmit}>
+            <input type="search" id="search-form" placeholder="I want to read..." value={ value } onChange={ onChange }>
             </input>
-            {children}
+            <SearchBtn></SearchBtn>
         </form>
     );
 }
