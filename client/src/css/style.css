@@ -3,14 +3,32 @@ body {
     height: 100%;
 }
 
+html {
+    background-image: url(../img/book.jpeg);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+#root {
+    height: 100%;
+}
+
 .container {
     max-width: 900px;
     min-height: 100%;
     position: relative;
+    background: rgb(255, 255, 255, 0.9);
+}
+
+nav {
+    background-color: rgb(255, 255, 255, 0.3) !important;
+}
+
+#nav-container {
+    background-color: rgb(255, 255, 255, 0.3) !important;
 }
 
 .header {
-    /* padding-top: 6rem; */
     text-align: center;
     vertical-align: bottom;
     width: 100%;
@@ -21,16 +39,12 @@ body {
     padding-top: 6rem;
 }
 
-.hide {
-    display: none;
-}
-
-.show {
-    display: block;
-}
-
 ul {
     list-style: none;
+}
+
+li {
+    margin-left: 1rem;
 }
 
 .footer {
@@ -55,24 +69,37 @@ img {
 form {
     position: relative;
     float: right;
-    margin: 1.25rem 0 0 0;
+    margin-bottom: 0;
     height: 100%;
 }
 
 form > input[type="search"] {
     float: left;
-    margin: 0;
+    margin-bottom: 0;
     border-radius: 4px 0 0 4px;
+    background-color: white;
 }
 
 form > button[type="submit"] {
     float: left;
-    margin: 0;
+    margin-bottom: 0;
     border-radius: 0 4px 4px 0;
 }
 
 #nav-search {
     float: right;
+    height: 100%;
+    margin-top: 1.25rem;
+    margin-bottom: 0;
+}
+
+/* Cards */
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: rgb(255, 255, 255, 0.3) !important;
+    padding: 1rem;
+    text-align: center;
 }
 
 /* nav bar, other skeleton stuff, and media queries below */

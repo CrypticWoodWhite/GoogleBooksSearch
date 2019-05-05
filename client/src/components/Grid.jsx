@@ -1,8 +1,8 @@
 import React from "react";
 
-export function Container({ children }) {
+export function Container({ children, id }) {
     return(
-        <div className="container">
+        <div className="container" id={id}>
             {children}
         </div>
     );

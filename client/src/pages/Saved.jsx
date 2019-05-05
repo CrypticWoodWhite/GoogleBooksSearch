@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Header from "../components/Header";
-import Nav from "../components/Nav";
+import { Nav, NavItem } from "../components/Nav";
 import {Container, Row, Column} from "../components/Grid";
 import Footer from "../components/Footer";
 import API from "../utils/API";
@@ -20,14 +20,14 @@ class Saved extends Component {
         this.getSavedBooks();
     };
 
-    getSavedBooks = () => {
-        API.getSavedBooks()
-            .then(
-                res => this.setState({books: res.data})
-            ).catch(
-                err => console.log(err);
-            )
-    }
+    // getSavedBooks = () => {
+    //     API.getSavedBooks()
+    //         .then(
+    //             res => this.setState({books: res.data})
+    //         ).catch(
+    //             err => console.log(err);
+    //         )
+    // }
 
 
     ////
