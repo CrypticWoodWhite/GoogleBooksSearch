@@ -3,13 +3,11 @@ import Header from "../components/Header";
 import { Nav, NavItem } from "../components/Nav";
 import { Container, Row } from "../components/Grid";
 import SearchForm from "../components/SearchForm";
-import IMG from "../components/IMG";
 import A from "../components/A";
-import { SaveBtn } from "../components/Button";
 import Footer from "../components/Footer";
-import { Cards, Card } from "../components/Card";
 import API from "../utils/API";
 import Books from "./Books";
+// import Saved from "./Saved";
 
 
 class Search extends Component {
@@ -80,16 +78,13 @@ class Search extends Component {
                     <h4>Library</h4>
                 </Row>
 
-                <Books 
-                    books={ this.state.books }
-                    search ={ this.state.search }
+                {/* conditional to determine whether to show saved or searched books? */}
+                <Books
                     {...this.state}
                 />
 
                 <Footer></Footer>
             </Container>
-
-
 
         )
     };

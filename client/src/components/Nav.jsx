@@ -5,7 +5,7 @@ import { UL } from "./UnorderedList";
 export function Nav( {children} ) {
     return (
         <nav className="navbar">
-            <Container id="nav-container">
+            <Container key="nav-container">
                 <UL className="navbar-list">
                     {children}
                 </UL>

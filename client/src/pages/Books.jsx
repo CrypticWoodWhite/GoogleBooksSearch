@@ -12,20 +12,22 @@ class Books extends Component {
     handleSaveBook = event => {
         event.preventDefault();
 
-        API.saveBook({
-            title: this.state.books.volumeInfo.title,
-            author: this.state.books.volumeInfo.authors,
-            synopsis: this.state.books.volumeInfo.description,
-            image: this.state.books.volumeInfo.imageLinks.thumbnail,
-            link: this.state.books.volumeInfo.previewLink
-        }).then(res => console.log("res of save: " + res)
-        ).catch(err => console.log(err));
+        const book = {
+            title: event.target.dataset.title,
+            author: event.target.dataset.author,
+            synopsis: event.target.dataset.synopsis,
+            image: event.target.dataset.image,
+            link: event.target.dataset.link
+        };
 
-
+        console.log("save this book: " + book.title);
+        
+        API.saveBook( book )
+            .then(res => console.log("res of save: " + res))
+            .catch(err => console.log(err));
     };
     
-
-    ////
+    //////////////////////////////////////
 
     render () {
 
@@ -35,12 +37,16 @@ class Books extends Component {
 
                 { this.props.books.length ? (
                     <Cards>
-                        {this.props.books.map(book => (
-                            <Card id={"card-" + book.volumeInfo.title}>
+                        { this.props.books.map(book => (
+                            <Card
+                                id={ "card-" + book.volumeInfo.previewLink }
+                                key={ "card-" + book.volumeInfo.previewLink }
+                            >
                                 <IMG
                                     alt={ book.volumeInfo.title }
                                     src={ book.volumeInfo.imageLinks ? ( book.volumeInfo.imageLinks.thumbnail ) : ("") }
-                                    id={"img-" + book.volumeInfo.title }
+                                    id={ "img-" + book.volumeInfo.previewLink }
+                                    key={ "img-" + book.volumeInfo.previewLink }
                                 />
                                 <A 
                                     className="book"
@@ -52,8 +58,14 @@ class Books extends Component {
                                 <br/>
                                 <p>{ book.volumeInfo.description }</p>
                                 <SaveBtn
-                                    id={"save-" + book.volumeInfo.title }
+                                    id={ "save-" + book.volumeInfo.previewLink }
+                                    key={ "save-" + book.volumeInfo.previewLink }
                                     onClick= { this.handleSaveBook }
+                                    title={ book.volumeInfo.title }
+                                    author={ book.volumeInfo.authors }
+                                    synopsis={ book.volumeInfo.description }
+                                    image={ book.volumeInfo.imageLinks ? ( book.volumeInfo.imageLinks.thumbnail ) : ("") }
+                                    link={ book.volumeInfo.previewLink }
                                 >
                                     Save
                                 </SaveBtn>
