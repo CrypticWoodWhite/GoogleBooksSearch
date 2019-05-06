@@ -9,24 +9,6 @@ import API from "../utils/API";
 
 class Books extends Component {
 
-    state = {
-        books: [],
-        title: "",
-        author: "",
-        synopsis: "",
-        image: "",
-        link: "",
-        search: ""
-    };
-
-    componentDidMount() {
-        this.loadBooks();
-    };
-
-    loadBooks = event => {
-
-    };
-
     handleSaveBook = event => {
         event.preventDefault();
 
@@ -46,17 +28,18 @@ class Books extends Component {
     ////
 
     render () {
+
         return (
 
             <Row id="row-three-searchcards">
 
-                { this.state.books.length ? (
+                { this.props.books.length ? (
                     <Cards>
-                        {this.state.books.map(book => (
+                        {this.props.books.map(book => (
                             <Card id={"card-" + book.volumeInfo.title}>
                                 <IMG
                                     alt={ book.volumeInfo.title }
-                                    src={ book.volumeInfo.imageLinks.thumbnail }
+                                    src={ book.volumeInfo.imageLinks ? ( book.volumeInfo.imageLinks.thumbnail ) : ("") }
                                     id={"img-" + book.volumeInfo.title }
                                 />
                                 <A 

@@ -80,8 +80,12 @@ class Search extends Component {
                     <h4>Library</h4>
                 </Row>
 
-                <Books />
-                                
+                <Books 
+                    books={ this.state.books }
+                    search ={ this.state.search }
+                    {...this.state}
+                />
+
                 <Footer></Footer>
             </Container>
 
