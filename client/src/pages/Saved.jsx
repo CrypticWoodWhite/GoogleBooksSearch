@@ -18,7 +18,8 @@ class Saved extends Component {
         author: "",
         synopsis: "",
         image: "",
-        link: ""
+        link: "",
+        search: ""
     };
 
     componentDidMount() {

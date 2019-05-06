@@ -9,6 +9,7 @@ import { SaveBtn } from "../components/Button";
 import Footer from "../components/Footer";
 import { Cards, Card } from "../components/Card";
 import API from "../utils/API";
+import Books from "./Books";
 
 
 class Search extends Component {
@@ -39,21 +40,6 @@ class Search extends Component {
                     books: res.data.items
                 });
             }).catch(err => console.log(err));
-    };
-
-    handleSaveBook = event => {
-        event.preventDefault();
-
-        API.saveBook({
-            title: this.state.books.volumeInfo.title,
-            author: this.state.books.volumeInfo.authors,
-            synopsis: this.state.books.volumeInfo.description,
-            image: this.state.books.volumeInfo.imageLinks.thumbnail,
-            link: this.state.books.volumeInfo.previewLink
-        }).then(res => console.log("res of save: " + res)
-        ).catch(err => console.log(err));
-
-
     };
     
 
@@ -94,41 +80,8 @@ class Search extends Component {
                     <h4>Library</h4>
                 </Row>
 
-                <Row id="row-three-searchcards">
-
-                    { this.state.books.length ? (
-                        <Cards>
-                            {this.state.books.map(book => (
-                                <Card id={"card-" + book.volumeInfo.title}>
-                                    <IMG
-                                        alt={ book.volumeInfo.title }
-                                        src={ book.volumeInfo.imageLinks.thumbnail }
-                                        id={"img-" + book.volumeInfo.title }
-                                    />
-                                    <A 
-                                        className="book"
-                                        href={ book.volumeInfo.previewLink }
-                                    >
-                                        <strong><i>{ book.volumeInfo.title }</i></strong> by { book.volumeInfo.authors }
-                                    </A>
-                                    <br/>
-                                    <br/>
-                                    <p>{ book.volumeInfo.description }</p>
-                                    <SaveBtn
-                                        id={"save-" + book.volumeInfo.title }
-                                        onClick= { this.handleSaveBook }
-                                    >
-                                        Save
-                                    </SaveBtn>
-                                </Card>
-                            ))}
-                        </Cards>
-                    ) : (
-                        <h5>No books to display, try a new search.</h5>
-                    )}
-
-                </Row>
-                
+                <Books />
+                                
                 <Footer></Footer>
             </Container>
 
