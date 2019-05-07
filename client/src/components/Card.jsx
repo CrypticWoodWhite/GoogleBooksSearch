@@ -8,9 +8,9 @@ export function Cards({ children }) {
     );
 };
 
-export function Card({ children }) {
+export function Card({ opacity, children }) {
     return (
-        <section className="card">
+        <section className="card" style={{opacity: opacity}}>
             {children}
         </section>
     );

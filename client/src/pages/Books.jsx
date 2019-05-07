@@ -9,8 +9,18 @@ import API from "../utils/API";
 
 class Books extends Component {
 
-    handleSaveBook = event => {
-        event.preventDefault();
+    state = {
+        opacity: 1.0,
+        selected: ""
+    };
+
+    // changeOpacity = () => {
+    //     this.setState({
+    //         opacity: 0.5,
+    //     });
+    // };
+
+    handleSaveBook = (event, i) => {
 
         const book = {
             title: event.target.dataset.title,
@@ -19,10 +29,13 @@ class Books extends Component {
             image: event.target.dataset.image,
             link: event.target.dataset.link
         };
-                
+
         API.saveBook( book )
             .then(res => console.log("successful save"))
             .catch(err => console.log(err));
+
+        // this.changeOpacity();
+        
     };
     
     //////////////////////////////////////
@@ -35,14 +48,14 @@ class Books extends Component {
 
                 { this.props.books.length ? (
                     <Cards>
-                        { this.props.books.map(book => (
+                        { this.props.books.map((book, i) => (
                             <Card
-                                key={ "card-" + book.volumeInfo.previewLink }
-                            >
+                                key={ "card-" + i }
+                            >                            >
                                 <IMG
                                     alt={ book.volumeInfo.title }
                                     src={ book.volumeInfo.imageLinks ? ( book.volumeInfo.imageLinks.thumbnail ) : ("") }
-                                    key={ "img-" + book.volumeInfo.previewLink }
+                                    key={ "img-" + i }
                                 />
                                 <A 
                                     className="book"
@@ -54,7 +67,7 @@ class Books extends Component {
                                 <br/>
                                 <p>{ book.volumeInfo.description }</p>
                                 <SaveBtn
-                                    key={ "save-" + book.volumeInfo.previewLink }
+                                    key={ "save-" + i }
                                     onClick= { this.handleSaveBook }
                                     title={ book.volumeInfo.title }
                                     author={ book.volumeInfo.authors }

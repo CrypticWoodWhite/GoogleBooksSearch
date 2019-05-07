@@ -19,7 +19,8 @@ class Search extends Component {
         synopsis: "",
         image: "",
         link: "",
-        search: ""
+        search: "",
+        opacity: 1.0, 
     };
 
     handleInputChange = event => {
