@@ -8,9 +8,9 @@ export function Cards({ children }) {
     );
 };
 
-export function Card({ id, children }) {
+export function Card({ children }) {
     return (
-        <section className="card" id={ id }>
+        <section className="card">
             {children}
         </section>
     );

@@ -1,8 +1,8 @@
 import React from "react";
 
-const IMG = ({ alt, src, id }) => {
+const IMG = ({ alt, src }) => {
     return (
-        <img alt={alt} src={src} id={id} />
+        <img alt={alt} src={src} />
     );
 };
 

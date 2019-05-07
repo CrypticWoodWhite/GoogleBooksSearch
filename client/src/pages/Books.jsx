@@ -39,13 +39,11 @@ class Books extends Component {
                     <Cards>
                         { this.props.books.map(book => (
                             <Card
-                                id={ "card-" + book.volumeInfo.previewLink }
                                 key={ "card-" + book.volumeInfo.previewLink }
                             >
                                 <IMG
                                     alt={ book.volumeInfo.title }
                                     src={ book.volumeInfo.imageLinks ? ( book.volumeInfo.imageLinks.thumbnail ) : ("") }
-                                    id={ "img-" + book.volumeInfo.previewLink }
                                     key={ "img-" + book.volumeInfo.previewLink }
                                 />
                                 <A 
@@ -58,7 +56,6 @@ class Books extends Component {
                                 <br/>
                                 <p>{ book.volumeInfo.description }</p>
                                 <SaveBtn
-                                    id={ "save-" + book.volumeInfo.previewLink }
                                     key={ "save-" + book.volumeInfo.previewLink }
                                     onClick= { this.handleSaveBook }
                                     title={ book.volumeInfo.title }
