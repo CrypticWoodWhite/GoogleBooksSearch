@@ -15,11 +15,11 @@ const bookSchema = new Schema({
         required: true
     },
     image: {
-        type: Mixed,
+        type: String,
         required: true
     },
     link: {
-        type: Mixed,
+        type: String,
         required: true
     }
 });

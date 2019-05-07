@@ -13,4 +13,4 @@ router.delete("/:id", controller.remove);
 
 // router.route("*");
 
-module.exports = routes;
+module.exports = router;
