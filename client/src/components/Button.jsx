@@ -2,15 +2,12 @@ import React from "react";
 
 export function DeleteBtn ({ children, id, onClick }) {
     return (
-        <button className="button button-primary delete" type="button" id={id} onClick={onClick} >
-            {children}
-        </button>
-    );
-};
-
-export function ViewBtn ({ children, id, onClick }) {
-    return (
-        <button className="button view" type="button" id={id} onClick={onClick} >
+        <button
+            className="button button-primary delete"
+            type="button"
+            id={id}
+            onClick={onClick}
+        >
             {children}
         </button>
     );
@@ -21,8 +18,8 @@ export function SaveBtn ({ children, onClick, id, title, author, synopsis, image
         <button
             className="button button-primary save"
             type="button"
-            onClick={onClick}
             id={id}
+            onClick={onClick}
             data-title={title}
             data-author={author}
             data-synopsis={synopsis}

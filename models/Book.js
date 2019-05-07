@@ -8,19 +8,19 @@ const bookSchema = new Schema({
     },
     author: {
         type: String,
-        required: true
+        required: false
     },
     synopsis:  {
         type: String,
-        required: true
+        required: false
     },
     image: {
         type: String,
-        required: true
+        required: false
     },
     link: {
         type: String,
-        required: true
+        required: false
     }
 });
 

@@ -8,28 +8,19 @@ import API from "../utils/API";
 
 class Saved extends Component {
 
-    state = {
-        savedBooks: []
-    };
-
     handleDelete = event => {
         event.preventDefault();
         
         const deleteThis = event.target.id;
 
-        console.log("book id to be deleted: " + deleteThis);
         API.deleteBook(deleteThis)
-            .then(res => console.log("delete res: " + res))
-            .catch(err => console.log(err));
-
-        API.getSavedBooks()            
             .then(res => {
-                this.setState({
-                    savedBooks: res.data
-                });
-            });          
+                this.props.getSvdBks();
+                console.log("successful delete");
+            }).catch(err => console.log(err));
+        
+                  
     };
-
 
     ////
 
@@ -62,13 +53,8 @@ class Saved extends Component {
                                 <p>{ savedBook.synopsis }</p>
                                 <DeleteBtn
                                     key={ "save-" + i }
-                                    onClick= { this.handleDelete }
                                     id={ savedBook._id }
-                                    title={ savedBook.title }
-                                    author={ savedBook.author }
-                                    synopsis={ savedBook.synopsis }
-                                    image={ savedBook.image ? ( savedBook.image ) : ("") }
-                                    link={ savedBook.link }
+                                    onClick= { this.handleDelete }
                                 >
                                     Delete
                                 </DeleteBtn>

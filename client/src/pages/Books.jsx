@@ -9,18 +9,13 @@ import API from "../utils/API";
 
 class Books extends Component {
 
-    // state = {
-    //     opacity: 1.0,
-    //     selected: ""
-    // };
+    handleSaveBook = ( event ) => {
 
-    // changeOpacity = () => {
-    //     this.setState({
-    //         opacity: 0.5,
-    //     });
-    // };
+        const newSvdId = event.target.id;
+        console.log("key: " + newSvdId);
 
-    handleSaveBook = event => {
+        this.props.savedId.push( newSvdId );
+        console.log(this.props.savedId);
 
         const book = {
             title: event.target.dataset.title,
@@ -30,13 +25,13 @@ class Books extends Component {
             link: event.target.dataset.link
         };
 
-        this.props.savedBooks.push(book);
+        this.props.savedBooks.push( book );
 
         API.saveBook( book )
-            .then(res => console.log("successful save"))
+            .then(res => {
+                console.log("successful save");
+            })
             .catch(err => console.log(err));
-
-        // this.changeOpacity();
         
     };
     
@@ -57,11 +52,11 @@ class Books extends Component {
                         { this.props.books.map((book, i) => (
                             <Card
                                 key={ "card-" + i }
+                                opacity={ this.props.savedId.includes( (book.volumeInfo.title + "-" + i) ) ? 0.5 : 1.0 }
                             >
                                 <IMG
                                     alt={ book.volumeInfo.title }
                                     src={ book.volumeInfo.imageLinks ? ( book.volumeInfo.imageLinks.thumbnail ) : ("") }
-                                    key={ "img-" + i }
                                 />
                                 <A 
                                     className="book"
@@ -73,7 +68,8 @@ class Books extends Component {
                                 <br/>
                                 <p>{ book.volumeInfo.description }</p>
                                 <SaveBtn
-                                    key={ "save-" + i }
+                                    key={ "btn-" + i }
+                                    id={ book.volumeInfo.title + "-" + i }
                                     onClick= { this.handleSaveBook }
                                     title={ book.volumeInfo.title }
                                     author={ book.volumeInfo.authors }

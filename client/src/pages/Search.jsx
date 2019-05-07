@@ -15,23 +15,28 @@ class Search extends Component {
     state = {
         books: [],
         savedBooks: [],
+        savedId: [],
         title: "",
         author: "",
         synopsis: "",
         image: "",
         link: "",
         search: "",
-        savedPage: false 
+        savedPage: false
     };
 
     componentDidMount() {
+        this.getSavedBooks();
+    };
+
+    getSavedBooks = () => {
         API.getSavedBooks()
             .then(res => {
                 this.setState({
                     savedBooks: res.data
                 });
             });
-    };
+    }
 
     handleInputChange = event => {
         const searchTerms = event.target.value;
@@ -63,8 +68,8 @@ class Search extends Component {
         this.setState({
             savedPage: true
         });
-    };
-    
+        this.getSavedBooks();
+    };    
 
     ////
 
@@ -114,6 +119,7 @@ class Search extends Component {
                 />}
                 { this.state.savedPage && <Saved
                     {...this.state}
+                    getSvdBks={this.getSavedBooks}
                 />}
 
                 <Footer></Footer>
