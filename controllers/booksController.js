@@ -1,24 +1,24 @@
-const db = require("../models/book");
+const db = require("../models/Book");
+require("mongoose");
 
 module.exports = {
     findAll: function(res) {
-        db.Book.findAll()
+        db.findAll()
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
     save: function(req, res) {
-        console.log("save!", res);
-        db.Book.create(req.body)
+        db.create(req.body)
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
     findById: function(req, res) {
-        db.Book.findById(req.params.id)
+        db.findById(req.params.id)
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
     remove: function(req, res) {
-        db.Book.findById({ _id: req.params.id })
+        db.findById({ _id: req.params.id })
             .then(dbModel => dbModel.remove())
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));

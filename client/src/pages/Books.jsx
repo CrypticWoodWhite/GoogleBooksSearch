@@ -19,11 +19,9 @@ class Books extends Component {
             image: event.target.dataset.image,
             link: event.target.dataset.link
         };
-
-        console.log("save this book: " + book.title);
-        
+                
         API.saveBook( book )
-            .then(res => console.log("res of save: " + res))
+            .then(res => console.log("successful save"))
             .catch(err => console.log(err));
     };
     
