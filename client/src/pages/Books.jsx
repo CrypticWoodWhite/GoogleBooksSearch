@@ -9,13 +9,17 @@ import API from "../utils/API";
 
 class Books extends Component {
 
+    state = {
+        savedId: []
+    }
+
     handleSaveBook = ( event ) => {
 
         const newSvdId = event.target.id;
         console.log("key: " + newSvdId);
 
-        this.props.savedId.push( newSvdId );
-        console.log(this.props.savedId);
+        this.state.savedId.push( newSvdId );
+        console.log(this.state.savedId);
 
         const book = {
             title: event.target.dataset.title,
@@ -52,7 +56,7 @@ class Books extends Component {
                         { this.props.books.map((book, i) => (
                             <Card
                                 key={ "card-" + i }
-                                opacity={ this.props.savedId.includes( (book.volumeInfo.title + "-" + i) ) ? 0.5 : 1.0 }
+                                opacity={ this.state.savedId.includes( book.volumeInfo.title + "-" + i ) ? 0.5 : 1.0 }
                             >
                                 <IMG
                                     alt={ book.volumeInfo.title }
