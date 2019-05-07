@@ -16,12 +16,13 @@ export function ViewBtn ({ children, id, onClick }) {
     );
 };
 
-export function SaveBtn ({ children, onClick, title, author, synopsis, image, link }) {
+export function SaveBtn ({ children, onClick, id, title, author, synopsis, image, link }) {
     return (
         <button
             className="button button-primary save"
             type="button"
             onClick={onClick}
+            id={id}
             data-title={title}
             data-author={author}
             data-synopsis={synopsis}

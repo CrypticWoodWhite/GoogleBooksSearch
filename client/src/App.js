@@ -1,10 +1,17 @@
 import React from "react";
-// import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Search from "./pages/Search";
-// import Saved from "../src/pages/Saved";
+import Saved from "./pages/Saved";
 
 function App() {
-  return ( <Search /> );
-}
+    return(
+        <Router>
+            <Switch>
+                <Route exact path="/" component={Search} />
+                <Route exact path="/books" component={Saved} />
+            </Switch>
+        </Router>
+    )
+};
 
 export default App;

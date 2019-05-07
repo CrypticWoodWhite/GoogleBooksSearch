@@ -2,8 +2,8 @@ const db = require("../models/Book");
 require("mongoose");
 
 module.exports = {
-    findAll: function(res) {
-        db.findAll()
+    findAll: function(req, res) {
+        db.find({})
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },

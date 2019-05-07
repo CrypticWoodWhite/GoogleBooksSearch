@@ -9,10 +9,10 @@ import API from "../utils/API";
 
 class Books extends Component {
 
-    state = {
-        opacity: 1.0,
-        selected: ""
-    };
+    // state = {
+    //     opacity: 1.0,
+    //     selected: ""
+    // };
 
     // changeOpacity = () => {
     //     this.setState({
@@ -20,7 +20,7 @@ class Books extends Component {
     //     });
     // };
 
-    handleSaveBook = (event, i) => {
+    handleSaveBook = event => {
 
         const book = {
             title: event.target.dataset.title,
@@ -29,6 +29,8 @@ class Books extends Component {
             image: event.target.dataset.image,
             link: event.target.dataset.link
         };
+
+        this.props.savedBooks.push(book);
 
         API.saveBook( book )
             .then(res => console.log("successful save"))
@@ -43,6 +45,10 @@ class Books extends Component {
     render () {
 
         return (
+            <>
+            <Row id="row-two-publiclibrary">
+                <h4>Public Library</h4>
+            </Row>
 
             <Row id="row-three-searchcards">
 
@@ -51,7 +57,7 @@ class Books extends Component {
                         { this.props.books.map((book, i) => (
                             <Card
                                 key={ "card-" + i }
-                            >                            >
+                            >
                                 <IMG
                                     alt={ book.volumeInfo.title }
                                     src={ book.volumeInfo.imageLinks ? ( book.volumeInfo.imageLinks.thumbnail ) : ("") }
@@ -85,10 +91,10 @@ class Books extends Component {
                 )}
 
             </Row>
-
+            </>
         )
     };
 
-}
+};
 
 export default Books;

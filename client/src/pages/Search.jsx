@@ -1,26 +1,36 @@
 import React, { Component } from "react";
 import Header from "../components/Header";
 import { Nav, NavItem } from "../components/Nav";
-import { Container, Row } from "../components/Grid";
+import { Container } from "../components/Grid";
 import SearchForm from "../components/SearchForm";
 import A from "../components/A";
 import Footer from "../components/Footer";
 import API from "../utils/API";
 import Books from "./Books";
-// import Saved from "./Saved";
+import Saved from "./Saved";
 
 
 class Search extends Component {
 
     state = {
         books: [],
+        savedBooks: [],
         title: "",
         author: "",
         synopsis: "",
         image: "",
         link: "",
         search: "",
-        opacity: 1.0, 
+        savedPage: false 
+    };
+
+    componentDidMount() {
+        API.getSavedBooks()
+            .then(res => {
+                this.setState({
+                    savedBooks: res.data
+                });
+            });
     };
 
     handleInputChange = event => {
@@ -40,6 +50,20 @@ class Search extends Component {
                 });
             }).catch(err => console.log(err));
     };
+
+    onClickHome = event => {
+        event.preventDefault();
+        this.setState({
+            savedPage: false
+        });
+    };
+
+    onClickSaved = event => {
+        event.preventDefault();
+        this.setState({
+            savedPage: true
+        });
+    };
     
 
     ////
@@ -55,11 +79,21 @@ class Search extends Component {
 
                 <Nav>
                     <NavItem id="nav-home">
-                        <A className="navbar-link" href="/">Home</A>
+                        <A
+                            className="navbar-link"
+                            onClick={ this.onClickHome }
+                        >
+                            Home
+                        </A>
                     </NavItem>
 
                     <NavItem id="nav-saved">
-                        <A className="navbar-link" href="/">Saved books</A>
+                        <A
+                            className="navbar-link"
+                            onClick={ this.onClickSaved }
+                        >
+                            Saved books
+                        </A>
                     </NavItem>
                     
                     <NavItem id="nav-search">
@@ -75,14 +109,12 @@ class Search extends Component {
 
                 <br/>
 
-                <Row id="row-two-library">
-                    <h4>Library</h4>
-                </Row>
-
-                {/* conditional to determine whether to show saved or searched books? */}
-                <Books
+                { !this.state.savedPage && <Books
                     {...this.state}
-                />
+                />}
+                { this.state.savedPage && <Saved
+                    {...this.state}
+                />}
 
                 <Footer></Footer>
             </Container>
