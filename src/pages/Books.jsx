@@ -58,7 +58,7 @@ class Books extends Component {
 
                 { this.props.books.length ? (
                     <Cards>
-                        { this.props.books.map((book, i) => (
+                        { this.props.books && this.props.books.map((book, i) => (
                             <Card
                                 key={ "card-" + i } 
                                 opacity={ this.handleChgOpacity( book.volumeInfo.title + "-" + i ) }
