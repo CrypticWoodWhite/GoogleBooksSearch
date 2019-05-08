@@ -53,7 +53,7 @@ class Books extends Component {
             <Row id="row-two-publiclibrary">
                 <h4>Public Library</h4>
             </Row>
-            
+
             <Row id="row-three-searchcards">
 
                 { this.props.books.length ? (
