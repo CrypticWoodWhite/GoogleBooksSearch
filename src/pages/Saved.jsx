@@ -31,7 +31,7 @@ class Saved extends Component {
 
             <Row id="row-three-savedcards">
 
-                { this.props.savedBooks.length ? (
+                { this.props.savedBooks.length > 0 ? (
                     <Cards>
                         { this.props.savedBooks.map((savedBook, i) => (
                             <Card key={ "card-" + i }>
