@@ -17,9 +17,7 @@ class Saved extends Component {
             .then(res => {
                 this.props.getSvdBks();
                 console.log("successful delete");
-            }).catch(err => console.log(err));
-        
-                  
+            }).catch(err => console.log(err));                  
     };
 
     ////

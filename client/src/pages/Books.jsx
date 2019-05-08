@@ -9,17 +9,17 @@ import API from "../utils/API";
 
 class Books extends Component {
 
-    state = {
-        savedId: []
-    }
+    state={
+        opacity: 1.0,
+        opacitySaved: 0.5
+    };
 
-    handleSaveBook = ( event ) => {
+    handleSaveBook = event => {
 
         const newSvdId = event.target.id;
-        console.log("key: " + newSvdId);
 
-        this.state.savedId.push( newSvdId );
-        console.log(this.state.savedId);
+        this.props.savedId.push(newSvdId);
+        console.log(this.props.savedId);
 
         const book = {
             title: event.target.dataset.title,
@@ -29,14 +29,19 @@ class Books extends Component {
             link: event.target.dataset.link
         };
 
-        this.props.savedBooks.push( book );
+        this.props.savedBooks.push(book);
 
-        API.saveBook( book )
+        API.saveBook(book)
             .then(res => {
                 console.log("successful save");
             })
             .catch(err => console.log(err));
         
+    };
+
+    handleChgOpacity = id => {
+        const cond = this.props.savedId.includes(id);
+        return cond ? this.state.opacitySaved : this.state.opacity;
     };
     
     //////////////////////////////////////
@@ -48,7 +53,7 @@ class Books extends Component {
             <Row id="row-two-publiclibrary">
                 <h4>Public Library</h4>
             </Row>
-
+  
             <Row id="row-three-searchcards">
 
                 { this.props.books.length ? (
@@ -56,7 +61,7 @@ class Books extends Component {
                         { this.props.books.map((book, i) => (
                             <Card
                                 key={ "card-" + i }
-                                opacity={ this.state.savedId.includes( book.volumeInfo.title + "-" + i ) ? 0.5 : 1.0 }
+                                opacity={ this.handleChgOpacity( book.volumeInfo.title + "-" + i ) }
                             >
                                 <IMG
                                     alt={ book.volumeInfo.title }
