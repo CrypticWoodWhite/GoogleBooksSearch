@@ -60,7 +60,7 @@ class Books extends Component {
                     <Cards>
                         { this.props.books.map((book, i) => (
                             <Card
-                                key={ "card-" + i }
+                                key={ "card-" + i } 
                                 opacity={ this.handleChgOpacity( book.volumeInfo.title + "-" + i ) }
                             >
                                 <IMG
