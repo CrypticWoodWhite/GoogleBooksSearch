@@ -68,7 +68,6 @@ class Search extends Component {
         this.setState({
             savedPage: true
         });
-        this.getSavedBooks();
     };    
 
     ////
