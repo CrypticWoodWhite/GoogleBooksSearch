@@ -27,6 +27,9 @@ class Search extends Component {
 
     componentDidMount() {
         this.getSavedBooks();
+        console.log("state isarray books: " + Array.isArray(this.state.books));
+        console.log("state isarray savedbooks: " + Array.isArray(this.state.savedBooks));
+
     };
 
     getSavedBooks = () => {
