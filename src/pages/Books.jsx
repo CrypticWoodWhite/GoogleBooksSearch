@@ -10,8 +10,7 @@ import API from "../utils/API";
 class Books extends Component {
 
     state={
-        opacity: 1.0,
-        opacitySaved: 0.5
+        opacity: 1.0
     };
 
     handleSaveBook = event => {
@@ -29,19 +28,14 @@ class Books extends Component {
             link: event.target.dataset.link
         };
 
+        console.log(book);
         this.props.savedBooks.push(book);
 
         API.saveBook(book)
             .then(res => {
                 console.log("successful save");
-            })
-            .catch(err => console.log(err));
+            }).catch(err => console.log(err));
         
-    };
-
-    handleChgOpacity = id => {
-        const cond = this.props.savedId.includes(id);
-        return cond ? this.state.opacitySaved : this.state.opacity;
     };
     
     //////////////////////////////////////
@@ -61,7 +55,7 @@ class Books extends Component {
                         { this.props.books.map((book, i) => (
                             <Card
                                 key={ "card-" + i } 
-                                opacity={ this.handleChgOpacity( book.volumeInfo.title + "-" + i ) }
+                                opacity={ this.props.savedId.includes(book.volumeInfo.title + "-" + i) ? (0.5) : (1.0) }
                             >
                                 <IMG
                                     alt={ book.volumeInfo.title }

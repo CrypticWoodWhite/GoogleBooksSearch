@@ -1,8 +1,8 @@
 import React from "react";
 
-const A = ({ className, onClick, children }) => {
+const A = ({ className, onClick, href, children }) => {
     return (
-        <a className={ className } onClick={ onClick } href="/" rel="noopener noreferrer">
+        <a className={ className } onClick={ onClick } href={ href } rel="noopener noreferrer">
             {children}
         </a>
     );
