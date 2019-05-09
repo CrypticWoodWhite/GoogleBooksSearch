@@ -13,6 +13,9 @@ class Books extends Component {
 
         const newSvdId = event.target.id;
 
+        console.log("this.props.savedId: ", this.props.savedId);
+        console.log("isArray: ", Array.isArray(this.props.savedId));
+
         this.props.savedId.push(newSvdId);
 
         const book = {
@@ -25,8 +28,8 @@ class Books extends Component {
 
         console.log("this.props.savedBooks: ", this.props.savedBooks);
         console.log("isArray: ", Array.isArray(this.props.savedBooks));
-        console.log("this.props.books: ", this.props.books);
-        console.log("isArray: ", Array.isArray(this.props.books));        
+        // console.log("this.props.books: ", this.props.books);
+        // console.log("isArray: ", Array.isArray(this.props.books));        
 
         this.props.savedBooks.push(book);
 
