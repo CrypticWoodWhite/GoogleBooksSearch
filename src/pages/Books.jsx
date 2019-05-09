@@ -25,6 +25,8 @@ class Books extends Component {
 
         console.log("this.props.savedBooks: ", this.props.savedBooks);
         console.log("isArray: ", Array.isArray(this.props.savedBooks));
+        console.log("this.props.books: ", this.props.books);
+        console.log("isArray: ", Array.isArray(this.props.books));        
 
         this.props.savedBooks.push(book);
 

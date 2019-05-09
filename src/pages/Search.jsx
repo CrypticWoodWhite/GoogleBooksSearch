@@ -53,8 +53,6 @@ class Search extends Component {
                 this.setState({
                     books: res.data.items
                 });
-                console.log("this.state.books: ", this.state.books);
-                console.log("isArray: ", Array.isArray(this.state.books));        
             }).catch(err => console.log(err));
         
     
