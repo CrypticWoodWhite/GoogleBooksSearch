@@ -33,7 +33,7 @@ class Saved extends Component {
 
                 { this.props.savedBooks.length > 0 ? (
                     <Cards>
-                        { this.props.savedBooks.map((savedBook, i) => (
+                        { Object.keys(this.props.savedBooks).map((savedBook, i) => (
                             <Card key={ "card-" + i }>
                                 <IMG
                                     alt={ savedBook.title }
