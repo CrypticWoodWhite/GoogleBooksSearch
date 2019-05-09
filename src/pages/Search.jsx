@@ -25,12 +25,6 @@ class Search extends Component {
         savedPage: false
     };
 
-    componentDidMount() {
-        this.getSavedBooks();
-        // console.log("state isarray books: " + Array.isArray(this.state.books));
-        // console.log("state isarray savedbooks: " + Array.isArray(this.state.savedBooks));
-    };
-
     getSavedBooks = () => {
         API.getSavedBooks()
             .then(res => {
@@ -38,7 +32,13 @@ class Search extends Component {
                     savedBooks: res.data
                 });
             }).catch(err => console.log(err));
-    }
+    };
+
+    componentDidMount() {
+        this.getSavedBooks();
+        // console.log("state isarray books: " + Array.isArray(this.state.books));
+        // console.log("state isarray savedbooks: " + Array.isArray(this.state.savedBooks));
+    };
 
     handleInputChange = event => {
         const searchTerms = event.target.value;
@@ -121,7 +121,7 @@ class Search extends Component {
                 /> }
                 { this.state.savedPage && <Saved
                     { ...this.state }
-                    getSvdBks={ this.getSavedBooks }
+                    /* getSvdBks={ this.getSavedBooks } */
                 /> }
 
                 <Footer></Footer>

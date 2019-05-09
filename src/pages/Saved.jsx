@@ -8,6 +8,21 @@ import API from "../utils/API";
 
 class Saved extends Component {
 
+    componentDidMount() {
+        this.getSavedBooks();
+        // console.log("state isarray books: " + Array.isArray(this.state.books));
+        // console.log("state isarray savedbooks: " + Array.isArray(this.state.savedBooks));
+    };
+
+    getSavedBooks = () => {
+        API.getSavedBooks()
+            .then(res => {
+                this.setState({
+                    savedBooks: res.data
+                });
+            }).catch(err => console.log(err));
+    };
+
     handleDelete = event => {
         event.preventDefault();
         
