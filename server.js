@@ -15,9 +15,9 @@ if (process.env.NODE_ENV === "production") {
 app.use("/api/books", router);
 
 app.get("*", function(req, res) {
-    res.sendFile(path.join(__dirname, "./client/build/index.html"));
+    res.sendFile(path.join(__dirname, "./build/index.html"));
 });
-console.log(process.env.MONGODB_URI);
+
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks");
 
 app.listen(PORT, function() {
