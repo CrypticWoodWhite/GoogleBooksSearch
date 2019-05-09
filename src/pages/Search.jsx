@@ -26,7 +26,7 @@ class Search extends Component {
     };
 
     componentDidMount() {
-        this.getSavedBooks()
+        // this.getSavedBooks()
         console.log("state isarray books: " + Array.isArray(this.state.books));
         console.log("state isarray savedbooks: " + Array.isArray(this.state.savedBooks));
     };
@@ -34,7 +34,6 @@ class Search extends Component {
     getSavedBooks = () => {
         API.getSavedBooks()
             .then(res => {
-                console.log("res: " + JSON.stringify(res));
                 console.log("res.data: " + res.data);
                 this.setState({
                     savedBooks: res.data
