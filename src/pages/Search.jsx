@@ -35,7 +35,7 @@ class Search extends Component {
                 this.setState({
                     savedBooks: res.data
                 });
-            });
+            }).catch(err => console.log(err));
     }
 
     handleInputChange = event => {
