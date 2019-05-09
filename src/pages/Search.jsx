@@ -54,8 +54,11 @@ class Search extends Component {
                     books: res.data.items
                 });
             }).catch(err => console.log(err));
-        
-    
+            
+            
+        console.log("state isarray books: " + Array.isArray(this.state.books));
+        console.log("state isarray savedbooks: " + Array.isArray(this.state.savedBooks));
+
     };
 
     onClickHome = event => {
