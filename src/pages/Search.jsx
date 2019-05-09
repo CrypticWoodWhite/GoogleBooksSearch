@@ -30,8 +30,10 @@ class Search extends Component {
     };
 
     getSavedBooks = () => {
+        console.log("get saved books called");
         API.getSavedBooks()
             .then(res => {
+                console.log("res: " + res.data);
                 this.setState({
                     savedBooks: res.data
                 });
