@@ -120,12 +120,12 @@ class Search extends Component {
                 <br/>
 
                 { !this.state.savedPage && <Books
-                    {...this.state}
-                />}
+                    { ...this.state }
+                /> }
                 { this.state.savedPage && <Saved
-                    {...this.state}
-                    getSvdBks={this.getSavedBooks}
-                />}
+                    { ...this.state }
+                    getSvdBks={ this.getSavedBooks }
+                /> }
 
                 <Footer></Footer>
             </Container>
