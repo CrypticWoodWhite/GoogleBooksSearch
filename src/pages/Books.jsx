@@ -23,7 +23,7 @@ class Books extends Component {
             link: event.target.dataset.link
         };
 
-        (this.props.savedBooks).push(book);
+        this.props.savedBooks.push(book);
 
         API.saveBook(book)
             .then(res => {
