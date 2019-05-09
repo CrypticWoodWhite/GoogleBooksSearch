@@ -37,7 +37,6 @@ class Books extends Component {
             .then(res => {
                 console.log("successful save");
             }).catch(err => console.log(err));
-        
     };
     
     //////////////////////////////////////
