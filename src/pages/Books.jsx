@@ -9,16 +9,11 @@ import API from "../utils/API";
 
 class Books extends Component {
 
-    state={
-        opacity: 1.0
-    };
-
     handleSaveBook = event => {
 
         const newSvdId = event.target.id;
 
         this.props.savedId.push(newSvdId);
-        console.log(this.props.savedId);
 
         const book = {
             title: event.target.dataset.title,
@@ -28,7 +23,6 @@ class Books extends Component {
             link: event.target.dataset.link
         };
 
-        console.log(book);
         this.props.savedBooks.push(book);
 
         API.saveBook(book)

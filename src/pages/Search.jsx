@@ -32,9 +32,9 @@ class Search extends Component {
     getSavedBooks = () => {
         API.getSavedBooks()
             .then(res => {
-                const data = Array.from(res.data);
+                console.log("res.data getsavedbooks: " + JSON.stringify(res.data));
                 this.setState({
-                    savedBooks: data
+                    savedBooks: res.data
                 });
             });
     }
@@ -51,6 +51,7 @@ class Search extends Component {
 
         API.searchBooks(this.state.search)
             .then(res => {
+                console.log("res.data.items searchbooks: " + JSON.stringify(res.data.items));
                 this.setState({
                     books: res.data.items
                 });
