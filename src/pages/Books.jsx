@@ -23,6 +23,9 @@ class Books extends Component {
             link: event.target.dataset.link
         };
 
+        console.log("this.props.savedBooks: ", this.props.savedBooks);
+        console.log("isArray: ", Array.isArray(this.props.savedBooks));
+
         this.props.savedBooks.push(book);
 
         API.saveBook(book)

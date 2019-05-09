@@ -32,7 +32,6 @@ class Search extends Component {
     getSavedBooks = () => {
         API.getSavedBooks()
             .then(res => {
-                console.log("res.data getsavedbooks: " + JSON.stringify(res.data));
                 this.setState({
                     savedBooks: res.data
                 });
@@ -51,11 +50,14 @@ class Search extends Component {
 
         API.searchBooks(this.state.search)
             .then(res => {
-                console.log("res.data.items searchbooks: " + JSON.stringify(res.data.items));
                 this.setState({
                     books: res.data.items
                 });
+                console.log("this.state.books: ", this.state.books);
+                console.log("isArray: ", Array.isArray(this.state.books));        
             }).catch(err => console.log(err));
+        
+    
     };
 
     onClickHome = event => {
