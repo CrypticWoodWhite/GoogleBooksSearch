@@ -35,7 +35,7 @@ class Search extends Component {
     };
 
     componentDidMount() {
-        // this.getSavedBooks();
+        this.getSavedBooks();
         // commenting out line above allows me to temporarily save/view saved books in heroku, but does not allow me to save books to db either locally or in heroku/mlab
         
         // having that line results in heroku reading state.savedBooks as not an array
@@ -125,7 +125,7 @@ class Search extends Component {
                 /> }
                 { this.state.savedPage && <Saved
                     { ...this.state }
-                    /* getSvdBks={ this.getSavedBooks } */
+                    getSvdBks={ this.getSavedBooks }
                 /> }
 
                 <Footer></Footer>
