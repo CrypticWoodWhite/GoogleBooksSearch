@@ -30,7 +30,7 @@ class Saved extends Component {
 
         API.deleteBook(deleteThis)
             .then(res => {
-                this.props.getSvdBks();
+                this.getSavedBooks();
                 console.log("successful delete");
             }).catch(err => console.log(err));                  
     };
