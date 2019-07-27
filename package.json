@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "engine": {
-    "node": "1.18.11"
+    "node": "^10.0.0"
   },
-  "proxy": "http://localhost:3001",
+  "proxy": "http://localhost:3000",
   "dependencies": {
     "axios": "^0.18.0",
     "dotenv": "^8.0.0",
