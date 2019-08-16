@@ -46,9 +46,9 @@ class Saved extends Component {
 
             <Row id="row-three-savedcards">
 
-                { this.savedBooks.length ? (
+                { this.props.savedBooks.length ? (
                     <Cards>
-                        { this.savedBooks.map((savedBook, i) => (
+                        { this.props.savedBooks.map((savedBook, i) => (
                             <Card key={ "card-" + i }>
                                 <IMG
                                     alt={ savedBook.title }

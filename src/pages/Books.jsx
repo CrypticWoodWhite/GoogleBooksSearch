@@ -16,7 +16,7 @@ class Books extends Component {
         // console.log("this.props.savedId: ", this.props.savedId);
         // console.log("isArray: ", Array.isArray(this.props.savedId));
 
-        this.props.savedId.push(newSvdId);
+        this.props.savedId.concat(newSvdId);
 
         const book = {
             title: event.target.dataset.title,
@@ -31,7 +31,7 @@ class Books extends Component {
         // console.log("this.props.books: ", this.props.books);
         // console.log("isArray: ", Array.isArray(this.props.books));        
 
-        this.props.savedBooks.push(book);
+        this.props.savedBooks.concat(book);
 
         API.saveBook(book)
             .then(res => {
