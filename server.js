@@ -4,19 +4,19 @@ const path = require("path");
 const router = require("./routes/apiRoutes");
 const app = express();
 const PORT = process.env.PORT || 3001;
-const cors = require("cors");
+// const cors = require("cors");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors());
+// app.use(cors());
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("build"));
 }
 
-app.use("/", router);
+app.use("/api/books", router);
 
-app.get("*", function(req, res) {
+app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "./build/index.html"));
 });
 
